@@ -292,7 +292,13 @@ def main():
                     else:
                         st.sidebar.warning("No matching stocks found")
 
-    
+    st.sidebar.markdown("---")
+    st.sidebar.header("Developed By")
+    st.sidebar.write("**Deepanshu Jindal**\n21BCS1933")
+    st.sidebar.write("**Ankit Panigarhi**\n21BCS2588")
+    st.sidebar.write("**Aman Sharma**\n21BCS2322")
+
+ 
     st.header("Stock Analysis")
         
         # Check if a stock is selected
@@ -328,7 +334,7 @@ def main():
         processed_data = preprocess_data(data)
         
         # Create tabs for different analyses
-    tab1, tab2, tab3 = st.tabs(["Overview", "Technical Analysis", "Reinforcement Learning"])
+    tab1, tab2, tab3, tab4 = st.tabs(["Overview", "Technical Analysis", "Reinforcement Learning", "Glossary and About"])
         
     with tab1:
         st.subheader(f"{stock_symbol} Stock Overview")
@@ -524,22 +530,77 @@ def main():
                         buy_count = action_labels.count('BUY')
                         sell_count = action_labels.count('SELL')
                         st.metric("Total Trades", f"{buy_count + sell_count}")
+    with tab4:
+
+        st.subheader("About This App")
+        st.write("""
+        This application uses Yahoo Finance data to visualize stock prices and technical indicators.
+        It implements a Reinforcement Learning model to predict optimal trading actions.
+        
+        **Key Features:**
+        - Real-time Stock Data
+        - Technical Analysis with MA, Bollinger Bands, MACD, RSI
+        - Reinforcement Learning Trading Agent
+        - Interactive Visualizations
+    """)
     
-
-    # st.header("About This App")
-    # st.write("""
-    #     This application uses Yahoo Finance data to visualize stock prices and technical indicators.
-    #     It implements a Reinforcement Learning model to predict optimal trading actions.
+        st.subheader("Technical Jargons Explained")
+    
+        st.write("**P/E Ratio (Price-to-Earnings Ratio)**")
+        st.write("""
+        The Price-to-Earnings ratio is a valuation metric that compares a company's stock price to its earnings per share (EPS).
         
-    #     **Key Features:**
-    #     - Real-time Stock Data
-    #     - Technical Analysis with MA, Bollinger Bands, MACD, RSI
-    #     - Reinforcement Learning Trading Agent
-    #     - Interactive Visualizations
+        **Formula:** P/E Ratio = Current Market Price of a Share / Earnings per Share
         
-    #     **Disclaimer:**
-    #     This app is for educational purposes only and should not be considered financial advice.
-    #     """)
+        A high P/E ratio may indicate that investors expect higher earnings growth in the future, while a low P/E ratio might suggest the stock is undervalued or that the company is facing challenges.
+        
+        **Example:** If a stock is trading at $100 and its EPS is $5, the P/E ratio is 20, meaning investors are willing to pay $20 for every $1 of earnings.
+    """)
+    
+        st.write("**52-Week High/Low**")
+        st.write("""
+        The highest and lowest prices at which a stock has traded during the past 52 weeks (one calendar year). 
+        This range gives investors an idea of the stock's volatility and price movement over the year.
+    """)
+    
+        st.write("**Moving Averages (MA)**")
+        st.write("""
+        A calculation used to analyze data points by creating a series of averages of different subsets of the full data set.
+        In stock trading, common periods are 20-day (SMA20) and 50-day (SMA50) moving averages.
+        
+        When a shorter-term MA crosses above a longer-term MA, it's often considered a bullish signal, and vice versa.
+    """)
+    
+        st.write("**Bollinger Bands**")
+        st.write("""
+        A technical analysis tool defined by a set of trendlines plotted two standard deviations away from a simple moving average of the price.
+        
+        When prices move close to the upper band, the market might be overbought; when they move close to the lower band, the market might be oversold.
+    """)
+    
+        st.write("**MACD (Moving Average Convergence Divergence)**")
+        st.write("""
+        A trend-following momentum indicator that shows the relationship between two moving averages of a security's price.
+        
+        Calculated by subtracting the 26-period EMA from the 12-period EMA, with a 9-period EMA "signal line" plotted on top.
+        
+        When MACD crosses above the signal line, it's often considered a bullish signal, and vice versa.
+    """)
+    
+        st.write("**RSI (Relative Strength Index)**")
+        st.write("""
+        A momentum oscillator that measures the speed and change of price movements on a scale from 0 to 100.
+        
+        Traditionally, RSI values over 70 indicate that a security is overbought (potential sell signal), while values below 30 indicate oversold conditions (potential buy signal).
+    """)
+    
+        st.write("**Disclaimer:**")
+        st.write("""
+        This app is for educational purposes only and should not be considered financial advice.
+    """)
 
+   
+
+# Add Created By section to sidebar
 if __name__ == "__main__":
     main()
