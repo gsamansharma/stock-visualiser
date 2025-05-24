@@ -11,7 +11,7 @@ from datetime import date, timedelta
 import requests
 from stable_baselines3 import PPO, A2C, DQN
 from stable_baselines3.common.vec_env import DummyVecEnv
-
+from dotenv import load_dotenv
 # Set page configuration
 st.set_page_config(page_title="RL Stock Trading", page_icon="📈", layout="wide")
 
@@ -227,7 +227,8 @@ class StockTradingEnv(gym.Env):
 @st.cache_data(ttl=3600)
 def search_stock_symbol(query):
     try:
-        url = f"https://financialmodelingprep.com/api/v3/search?query={query}&apikey=mxYbjV2cjX6aWCkyHZJU9QbYkwhACvSP"
+        api_key = os.getenv('FMP_API_KEY')
+        url = f"https://financialmodelingprep.com/api/v3/search?query={query}&apikey={api_key}"
         print(url)
         response = requests.get(url)
         if response.status_code != 200:
