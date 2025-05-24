@@ -12,6 +12,7 @@ import requests
 from stable_baselines3 import PPO, A2C, DQN
 from stable_baselines3.common.vec_env import DummyVecEnv
 from dotenv import load_dotenv
+import os
 # Set page configuration
 st.set_page_config(page_title="RL Stock Trading", page_icon="📈", layout="wide")
 
