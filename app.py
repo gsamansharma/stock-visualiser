@@ -229,7 +229,7 @@ class StockTradingEnv(gym.Env):
 def search_stock_symbol(query):
     try:
         api_key = os.getenv('FMP_API_KEY')
-        url = f"https://financialmodelingprep.com/api/v3/search?query={query}&apikey={api_key}"
+        url = f"https://financialmodelingprep.com/stable/search-symbol?query={query}&apikey={api_key}"
         print(url)
         response = requests.get(url)
         if response.status_code != 200:
@@ -296,9 +296,9 @@ def main():
 
     st.sidebar.markdown("---")
     st.sidebar.header("Developed By")
-    st.sidebar.write("**Deepanshu Jindal**\n21BCS1933")
-    st.sidebar.write("**Ankit Panigarhi**\n21BCS2588")
-    st.sidebar.write("**Aman Sharma**\n21BCS2322")
+    st.sidebar.write("**Deepanshu Jindal**")
+    st.sidebar.write("**Ankit Panigarhi**")
+    st.sidebar.write("**Aman Sharma**")
 
  
     st.header("Stock Analysis")
